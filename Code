@@ -1,0 +1,7 @@
+@echo off
+set downloadurl=http://media.steampowered.com/installer/steamcmd.zip
+set downloadpath=C:\steamcmd\steamcmd.zip
+set directory=C:\steamcmd\
+%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe -Command "& {Import-Module BitsTransfer;Start-BitsTransfer '%downloadurl%' '%downloadpath%';$shell = new-object -com shell.application;$zip = $shell.NameSpace('%downloadpath%');foreach($item in $zip.items()){$shell.Namespace('%directory%').copyhere($item);};remove-item '%downloadpath%';}"
+echo download complete and extracted to the directory.
+pause
